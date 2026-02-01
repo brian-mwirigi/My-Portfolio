@@ -12,8 +12,6 @@ tags:
 excerpt: "Tired of checking README every time? runbook-cli remembers for you. Works in any subfolder, any language."
 ---
 
-# Stop Remembering Project Commands: I Built a Tool
-
 **The scene:** You just switched to your backend project.
 
 **The question:** Is it `npm run dev`, `npm start`, or `python manage.py runserver`?

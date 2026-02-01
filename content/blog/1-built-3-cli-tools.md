@@ -12,8 +12,6 @@ tags:
 excerpt: "While students were decorating portfolios, I shipped 3 npm packages. Here's why shipping beats perfection."
 ---
 
-# I Built 3 CLI Tools in 3 Days (And You Can Too)
-
 While my classmates were perfecting their portfolio websites for the fifth time, I shipped three production CLI tools to npm. Total time? 3 days. Total users in the first week? Growing.
 
 This isn't a humble brag. It's a blueprint.

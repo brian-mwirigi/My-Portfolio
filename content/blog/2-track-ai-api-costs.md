@@ -13,8 +13,6 @@ tags:
 excerpt: "I was burning $50/week on GPT-4 without realizing it. Built a CLI tool in one night to fix it."
 ---
 
-# How I Track Every Dollar I Spend on AI APIs
-
 **The shock:** I checked my OpenAI billing last month. $217.
 
 **The problem:** I had no idea where it went.
