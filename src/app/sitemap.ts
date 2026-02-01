@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/blog'
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://brianmunene.me'
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://brianmunene.dev'
-  
   // Get all blog posts
   const posts = getAllPosts()
   
