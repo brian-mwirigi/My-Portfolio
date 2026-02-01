@@ -4,7 +4,7 @@ excerpt: The story behind building 4 Chrome extensions and what I learned about 
 date: 2026-01-20
 readTime: 6 min read
 category: UPDATE
-image: https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80
+image: https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format&fit=crop
 tags:
   - Chrome Extensions
   - JavaScript

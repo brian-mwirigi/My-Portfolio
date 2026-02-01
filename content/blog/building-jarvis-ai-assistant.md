@@ -4,7 +4,7 @@ excerpt: How I built an AI assistant using Python, OpenAI API, and speech recogn
 date: 2026-01-28
 readTime: 8 min read
 category: BUILD
-image: https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80
+image: https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&auto=format&fit=crop
 tags:
   - Python
   - OpenAI

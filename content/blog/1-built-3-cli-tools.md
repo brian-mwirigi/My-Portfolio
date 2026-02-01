@@ -1,8 +1,14 @@
 ---
 title: "I Built 3 CLI Tools in 3 Days (And You Can Too)"
-date: "February 1, 2026"
-author: "Brian Mwirigi"
-tags: ["CLI", "TypeScript", "Productivity", "Indie Hacking"]
+date: 2026-02-01
+readTime: 8 min read
+category: BUILD
+image: https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&auto=format&fit=crop
+tags:
+  - CLI
+  - TypeScript
+  - Productivity
+  - Indie Hacking
 excerpt: "While students were decorating portfolios, I shipped 3 npm packages. Here's why shipping beats perfection."
 ---
 

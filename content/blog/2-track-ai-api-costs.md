@@ -1,8 +1,15 @@
 ---
 title: "How I Track Every Dollar I Spend on AI APIs"
-date: "February 1, 2026"
-author: "Brian Mwirigi"
-tags: ["AI", "Cost Tracking", "GPT-4", "Claude", "Developer Tools"]
+date: 2026-02-01
+readTime: 6 min read
+category: TIPS
+image: https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop
+tags:
+  - AI
+  - Cost Tracking
+  - GPT-4
+  - Claude
+  - Developer Tools
 excerpt: "I was burning $50/week on GPT-4 without realizing it. Built a CLI tool in one night to fix it."
 ---
 

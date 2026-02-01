@@ -4,7 +4,7 @@ excerpt: The tools, extensions, and configurations I use daily to stay productiv
 date: 2026-01-05
 readTime: 7 min read
 category: SETUP
-image: https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=800&q=80
+image: https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=800&auto=format&fit=crop
 tags:
   - Setup
   - Productivity

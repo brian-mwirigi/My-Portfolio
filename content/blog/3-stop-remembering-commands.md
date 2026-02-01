@@ -1,8 +1,14 @@
 ---
 title: "Stop Remembering Project Commands: I Built a Tool"
-date: "February 1, 2026"
-author: "Brian Mwirigi"
-tags: ["CLI", "Productivity", "Developer Tools", "Workflow"]
+date: 2026-02-01
+readTime: 7 min read
+category: BUILD
+image: https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&auto=format&fit=crop
+tags:
+  - CLI
+  - Productivity
+  - Developer Tools
+  - Workflow
 excerpt: "Tired of checking README every time? runbook-cli remembers for you. Works in any subfolder, any language."
 ---
 
