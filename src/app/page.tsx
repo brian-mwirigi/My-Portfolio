@@ -269,34 +269,14 @@ export default function Home() {
               <p className="text-xs tracking-[0.3em] text-neutral-600 mb-4">ABOUT</p>
               <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-8">
                 BUILDING<br />
-                <span className="text-neutral-600">DIGITAL</span><br />
-                PRODUCTS
+                <span className="text-neutral-600">TOOLS &</span><br />
+                APPS
               </h2>
               
               <p className="text-neutral-400 text-lg max-w-xl mb-12 leading-relaxed">
-                CS student at Strathmore University. I turn complex problems into elegant solutions. 
-                Specialized in healthcare and SaaS systems.
+                CS student at Strathmore University building CLI tools, Chrome extensions, and full-stack applications. 
+                I ship side projects and open-source tools while learning in public.
               </p>
-
-              {/* Stats in horizontal row */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-                <div className="border-l border-neutral-800 pl-4">
-                  <p className="text-4xl font-bold">50+</p>
-                  <p className="text-xs text-neutral-600 mt-1">PROJECTS</p>
-                </div>
-                <div className="border-l border-neutral-800 pl-4">
-                  <p className="text-4xl font-bold">2+</p>
-                  <p className="text-xs text-neutral-600 mt-1">YEARS</p>
-                </div>
-                <div className="border-l border-neutral-800 pl-4">
-                  <p className="text-4xl font-bold">24</p>
-                  <p className="text-xs text-neutral-600 mt-1">HRS/WEEK</p>
-                </div>
-                <div className="border-l border-neutral-800 pl-4">
-                  <p className="text-4xl font-bold text-green-500">●</p>
-                  <p className="text-xs text-neutral-600 mt-1">AVAILABLE</p>
-                </div>
-              </div>
 
               {/* Tech pills */}
               <div className="flex flex-wrap gap-3">
