@@ -56,18 +56,20 @@ export default function Home() {
   return (
     <main className="bg-[#0a0a0a] text-white min-h-screen">
       {/* Floating nav */}
-      <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 px-2 py-2 bg-white/10 backdrop-blur-xl rounded-full flex gap-1">
-        {['home', 'work', 'info', 'contact'].map(item => (
-          <a key={item} href={`#${item}`} className="px-5 py-2 text-xs uppercase tracking-widest hover:bg-white/10 rounded-full transition">
-            {item}
+      <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 max-w-[calc(100vw-2rem)] overflow-x-auto scrollbar-hide">
+        <div className="px-2 py-2 bg-white/10 backdrop-blur-xl rounded-full flex gap-1 w-max">
+          {['home', 'work', 'info', 'contact'].map(item => (
+            <a key={item} href={`#${item}`} className="px-5 py-2 text-xs uppercase tracking-widest hover:bg-white/10 rounded-full transition whitespace-nowrap">
+              {item}
+            </a>
+          ))}
+          <a href="/blog" className="px-5 py-2 text-xs uppercase tracking-widest hover:bg-white/10 rounded-full transition whitespace-nowrap">
+            blog
           </a>
-        ))}
-        <a href="/blog" className="px-5 py-2 text-xs uppercase tracking-widest hover:bg-white/10 rounded-full transition">
-          blog
-        </a>
-        <a href="/docs" className="px-5 py-2 text-xs uppercase tracking-widest hover:bg-white/10 rounded-full transition">
-          docs
-        </a>
+          <a href="/docs" className="px-5 py-2 text-xs uppercase tracking-widest hover:bg-white/10 rounded-full transition whitespace-nowrap">
+            docs
+          </a>
+        </div>
       </nav>
 
       {/* HERO - Centered minimal */}
