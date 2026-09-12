@@ -74,4 +74,8 @@ export const faqs = [
     q: 'Is it free?',
     a: 'Yes. No account. Open the public demos at /canvas/demo before uploading your own file.',
   },
+  {
+    q: 'Is a short link private?',
+    a: 'No. The store is private and shares are not listed, but anyone with the URL can view the file. Do not upload secrets. See /privacy and /terms. Email support@brianmunene.me with the share id to delete one.',
+  },
 ]

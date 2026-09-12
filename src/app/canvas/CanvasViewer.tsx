@@ -473,12 +473,14 @@ export function CanvasViewer() {
             }}
           >
             Storage is a private repo. Anyone with the link can view — treat
-            URLs like secrets. HTML runs in a sandboxed iframe.{' '}
-            <a
-              href="/llms.txt"
-              style={{ color: canvasTokens.text.link, textDecoration: 'none' }}
-            >
-              llms.txt
+            URLs like secrets. HTML runs in a sandboxed iframe. Do not upload
+            passwords or keys.{' '}
+            <a href="/privacy" style={{ color: canvasTokens.text.link, textDecoration: 'none' }}>
+              Privacy
+            </a>
+            {' · '}
+            <a href="/terms" style={{ color: canvasTokens.text.link, textDecoration: 'none' }}>
+              Terms
             </a>
           </p>
         </div>

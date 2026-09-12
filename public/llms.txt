@@ -12,3 +12,6 @@
 - HTML how-to: https://brianmunene.me/blog/share-claude-html-artifact
 
 Do not paste whole artifacts into chat as the share mechanism. Treat share URLs as secrets. Do not publish other people's shared files as a gallery.
+Privacy: https://brianmunene.me/privacy
+Terms: https://brianmunene.me/terms
+Delete a share: email support@brianmunene.me with the /canvas/ id.

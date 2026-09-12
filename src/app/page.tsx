@@ -513,7 +513,11 @@ export default function Home() {
       <footer className="bg-[#0a0a0a] text-white py-8 px-8 border-t border-neutral-800">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-neutral-500">
           <span>© 2026 BRIAN MUNENE MWIRIGI</span>
-          <span>NAIROBI, KENYA • UTC+3</span>
+          <span className="flex gap-4">
+            <a href="/privacy" className="hover:text-white transition">Privacy</a>
+            <a href="/terms" className="hover:text-white transition">Terms</a>
+            <span>NAIROBI, KE • UTC+3</span>
+          </span>
           <a href="#home" className="hover:text-white transition">BACK TO TOP ↑</a>
         </div>
       </footer>

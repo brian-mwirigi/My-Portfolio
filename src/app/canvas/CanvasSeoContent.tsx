@@ -137,6 +137,19 @@ export function CanvasSeoContent() {
           </div>
         ))}
       </div>
+      <p style={{ margin: '28px 0 0', fontSize: 13 }}>
+        <a href="/privacy" style={{ color: '#87c3ff' }}>
+          Privacy
+        </a>
+        {' · '}
+        <a href="/terms" style={{ color: '#87c3ff' }}>
+          Terms
+        </a>
+        {' · '}
+        <a href="mailto:support@brianmunene.me" style={{ color: '#87c3ff' }}>
+          support@brianmunene.me
+        </a>
+      </p>
     </section>
   )
 }

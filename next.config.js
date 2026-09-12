@@ -30,6 +30,9 @@ const nextConfig = {
       { source: '/mermaid-viewer', destination: '/canvas', permanent: false },
       { source: '/share-markdown', destination: '/canvas', permanent: false },
       { source: '/open-canvas-tsx', destination: '/canvas', permanent: false },
+      { source: '/privacy-policy', destination: '/privacy', permanent: true },
+      { source: '/terms-of-service', destination: '/terms', permanent: true },
+      { source: '/terms-of-conditions', destination: '/terms', permanent: true },
       // AUX short URL
       { source: '/aux', destination: '/aux-mcp', permanent: true },
       { source: '/spotify-aux', destination: '/aux-mcp', permanent: true },

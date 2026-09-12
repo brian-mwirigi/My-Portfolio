@@ -40,6 +40,8 @@ export async function GET() {
     viewer: 'https://brianmunene.me/canvas',
     demo: 'https://brianmunene.me/canvas/demo',
     cli: 'npx --yes github:brian-mwirigi/canvas-share <file>',
+    privacy: 'https://brianmunene.me/privacy',
+    terms: 'https://brianmunene.me/terms',
   })
 }
 
