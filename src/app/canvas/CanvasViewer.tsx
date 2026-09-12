@@ -472,9 +472,7 @@ export function CanvasViewer() {
               color: canvasTokens.text.tertiary,
             }}
           >
-            Storage is a private repo. Anyone with the link can view — treat
-            URLs like secrets. HTML runs in a sandboxed iframe. Do not upload
-            passwords or keys.{' '}
+            HTML previews are sandboxed.{' '}
             <a href="/privacy" style={{ color: canvasTokens.text.link, textDecoration: 'none' }}>
               Privacy
             </a>

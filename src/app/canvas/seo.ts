@@ -60,7 +60,7 @@ export const faqs = [
   },
   {
     q: 'How do short links work?',
-    a: 'Copy short link stores the file in a private backend and serves it only through brianmunene.me. Anyone with the URL can view it — treat the link like a secret.',
+    a: 'You get a short URL like /canvas/a8k2m9qx. Send it to your team. They open it in any browser. Email support@brianmunene.me if you want a link taken down.',
   },
   {
     q: 'Can I embed a share in a doc?',
@@ -75,7 +75,7 @@ export const faqs = [
     a: 'Yes. No account. Open the public demos at /canvas/demo before uploading your own file.',
   },
   {
-    q: 'Is a short link private?',
-    a: 'No. The store is private and shares are not listed, but anyone with the URL can view the file. Do not upload secrets. See /privacy and /terms. Email support@brianmunene.me with the share id to delete one.',
+    q: 'Who can open a short link?',
+    a: 'The people you send it to. Shares are not listed on the site. Email support@brianmunene.me with the share id if you want one taken down. Privacy: /privacy.',
   },
 ]
