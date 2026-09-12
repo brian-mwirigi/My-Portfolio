@@ -1,10 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { detectKind, storageExt } from '@/lib/canvas-viewer/kind'
+import {
+  CANVAS_BINS_OWNER,
+  CANVAS_BINS_REPO,
+  canvasBinsHeaders,
+  getCanvasBinsToken,
+} from '@/lib/canvas-viewer/githubBins'
 
 export const runtime = 'nodejs'
 
-const OWNER = 'brian-mwirigi'
-const REPO = 'canvas-bins'
 const MAX_BYTES = 180_000
 
 function shortId(len = 8) {
@@ -13,18 +17,9 @@ function shortId(len = 8) {
   return Array.from(bytes, (b) => alphabet[b % alphabet.length]).join('')
 }
 
-function getToken() {
-  return (
-    process.env.CANVAS_BINS_TOKEN ||
-    process.env.GITHUB_TOKEN ||
-    process.env.GH_TOKEN ||
-    ''
-  )
-}
-
 export async function POST(req: NextRequest) {
   try {
-    const token = getToken()
+    const token = getCanvasBinsToken()
     if (!token) {
       return NextResponse.json(
         {
@@ -64,13 +59,11 @@ export async function POST(req: NextRequest) {
     const content = Buffer.from(source, 'utf8').toString('base64')
 
     const gh = await fetch(
-      `https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`,
+      `https://api.github.com/repos/${CANVAS_BINS_OWNER}/${CANVAS_BINS_REPO}/contents/${path}`,
       {
         method: 'PUT',
         headers: {
-          Accept: 'application/vnd.github+json',
-          Authorization: `Bearer ${token}`,
-          'X-GitHub-Api-Version': '2022-11-28',
+          ...canvasBinsHeaders(token),
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({

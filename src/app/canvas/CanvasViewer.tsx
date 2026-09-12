@@ -413,8 +413,9 @@ export function CanvasViewer() {
             }}
           >
             Markdown = any <code style={codeStyle}>.md</code>. Canvas = import the
-            UI SDK (<code style={codeStyle}>cursor/canvas</code>). Short links are
-            public — only open ones from people you trust.
+            UI SDK (<code style={codeStyle}>cursor/canvas</code>). Short-link files
+            are stored in a <strong>private</strong> repo and only served through
+            this site — still only open links from people you trust.
           </p>
         </div>
       ) : (

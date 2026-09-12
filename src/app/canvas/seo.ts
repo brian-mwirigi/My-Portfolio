@@ -51,10 +51,14 @@ export const faqs = [
   },
   {
     q: 'How do short links work?',
-    a: 'Click Copy short link to get a compact URL like /canvas/a8k2m9qx. Teammates open that link and see the same rendered canvas.',
+    a: 'Click Copy short link to get a compact URL like /canvas/a8k2m9qx. Files are stored in a private backend and only served through brianmunene.me — teammates open the link and see the same render.',
+  },
+  {
+    q: 'Is my shared file public on GitHub?',
+    a: 'No. Short-link storage is in a private repository. Content is only accessible via the share URL on this site (anyone with the link can still view it — treat links like secrets).',
   },
   {
     q: 'Is it free?',
-    a: 'Yes. Free to use, no account, MIT-friendly canvas format. Only open share links from people you trust.',
+    a: 'Yes. Free to use, no account. Only open share links from people you trust.',
   },
 ]
