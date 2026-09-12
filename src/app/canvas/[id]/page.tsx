@@ -4,8 +4,10 @@ import { fetchSharedCanvas } from '@/lib/canvas-viewer/fetchShare'
 
 export default async function SharedCanvasPage({
   params,
+  searchParams,
 }: {
   params: { id: string }
+  searchParams?: { embed?: string }
 }) {
   const doc = await fetchSharedCanvas(params.id)
   if (!doc) notFound()
@@ -16,6 +18,7 @@ export default async function SharedCanvasPage({
       source={doc.source}
       kind={doc.kind}
       fileName={doc.fileName}
+      embed={searchParams?.embed === '1'}
     />
   )
 }

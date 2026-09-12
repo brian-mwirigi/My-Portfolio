@@ -1,11 +1,10 @@
 'use client'
 
-import { useMemo, useState } from 'react'
 import Link from 'next/link'
-import { compileCanvasSource } from '@/lib/canvas-viewer/compile'
-import type { DocKind } from '@/lib/canvas-viewer/kind'
+import { kindLabel, type DocKind } from '@/lib/canvas-viewer/kind'
 import { canvasTokens } from '@/lib/cursor-canvas/tokens'
-import { MarkdownView } from '../MarkdownView'
+import { DocumentView } from '../DocumentView'
+import { ShareActions } from '../ShareActions'
 import { ShareRecruitBar } from '../ShareRecruitBar'
 
 export function SharedCanvasClient({
@@ -13,29 +12,18 @@ export function SharedCanvasClient({
   source,
   kind,
   fileName,
+  embed = false,
 }: {
   id: string
   source: string
   kind: DocKind
   fileName?: string
+  embed?: boolean
 }) {
-  const compiled = useMemo(() => {
-    if (kind !== 'canvas') return null
-    return compileCanvasSource(source)
-  }, [kind, source])
-  const [copied, setCopied] = useState(false)
-  const Comp = compiled?.ok ? compiled.Component : null
-
-  const copy = async () => {
-    const url = `${window.location.origin}/canvas/${id}`
-    try {
-      await navigator.clipboard.writeText(url)
-      setCopied(true)
-      window.setTimeout(() => setCopied(false), 2000)
-    } catch {
-      window.prompt('Copy link:', url)
-    }
-  }
+  const url =
+    typeof window !== 'undefined'
+      ? `${window.location.origin}/canvas/${id}`
+      : `https://brianmunene.me/canvas/${id}`
 
   return (
     <div
@@ -47,6 +35,7 @@ export function SharedCanvasClient({
           'ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif',
       }}
     >
+      {embed ? null : (
       <header
         style={{
           position: 'sticky',
@@ -61,7 +50,7 @@ export function SharedCanvasClient({
           background: canvasTokens.bg.chrome,
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0 }}>
           <Link
             href="/canvas"
             style={{
@@ -92,52 +81,17 @@ export function SharedCanvasClient({
               padding: '2px 8px',
             }}
           >
-            {kind === 'markdown' ? 'markdown' : 'canvas'}
-            {fileName ? ` · ${fileName}` : ''}
+            {kindLabel(kind)}
           </span>
         </div>
-        <button
-          type="button"
-          onClick={copy}
-          style={{
-            height: 28,
-            padding: '0 10px',
-            borderRadius: 6,
-            border: '1px solid transparent',
-            background: canvasTokens.accent.control,
-            color: canvasTokens.text.onAccent,
-            fontSize: 12,
-            fontWeight: 500,
-            cursor: 'pointer',
-          }}
-        >
-          {copied ? 'Copied' : 'Copy short link'}
-        </button>
+        <ShareActions url={url} source={source} kind={kind} fileName={fileName} />
       </header>
-
-      {kind === 'markdown' ? (
-        <div style={{ paddingBottom: 72 }}>
-          <MarkdownView source={source} />
-        </div>
-      ) : compiled && !compiled.ok ? (
-        <div
-          style={{
-            margin: 16,
-            padding: 14,
-            borderRadius: 8,
-            color: '#FC6B83',
-            background: canvasTokens.fill.tertiary,
-            fontSize: 13,
-          }}
-        >
-          {compiled.error}
-        </div>
-      ) : (
-        <div style={{ maxWidth: 1100, margin: '0 auto', paddingBottom: 72 }}>
-          {Comp ? <Comp /> : null}
-        </div>
       )}
-      <ShareRecruitBar />
+
+      <div style={{ paddingBottom: embed ? 0 : 72 }}>
+        <DocumentView source={source} kind={kind} />
+      </div>
+      {embed ? null : <ShareRecruitBar />}
     </div>
   )
 }

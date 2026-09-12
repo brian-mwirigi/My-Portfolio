@@ -6,11 +6,12 @@ const API = process.env.CANVAS_SHARE_API || 'https://brianmunene.me/api/canvas'
 
 const file = process.argv[2]
 if (!file || file === '-h' || file === '--help') {
-  console.log(`Share a Cursor canvas or markdown file.
+  console.log(`Share a local agent file as a short link.
 
-  npx cursor-canvas-share <file.canvas.tsx|file.md>
+  npx --yes github:brian-mwirigi/canvas-share <file>
 
-Prints a short URL on https://brianmunene.me/canvas
+Accepts .canvas.tsx, .md, .html, .json
+Prints https://brianmunene.me/canvas/{id}
 `)
   process.exit(file ? 0 : 1)
 }
@@ -21,7 +22,7 @@ const res = await fetch(API, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'User-Agent': 'cursor-canvas-share/1.0',
+    'User-Agent': 'cursor-canvas-share/1.1',
   },
   body: JSON.stringify({ source, fileName: basename(abs) }),
 })

@@ -16,8 +16,8 @@ const projects = [
 const cliTools = [
   {
     title: 'Canvas Viewer',
-    desc: 'Share a Cursor canvas — drop .canvas.tsx or .md, render live, copy a short teammate link',
-    features: ['Cursor canvas', 'Short links', 'npx share', 'No account'],
+    desc: 'The agent report your teammate cannot open — Cursor canvas, markdown + mermaid, Claude HTML, JSON',
+    features: ['HTML artifacts', 'Mermaid', 'Short links', 'No account'],
     npm: 'https://github.com/brian-mwirigi/canvas-share',
     registryLabel: 'npx',
     github: 'https://github.com/brian-mwirigi/canvas-share',
@@ -186,7 +186,7 @@ export default function Home() {
           <p className="text-xs tracking-[0.3em] text-neutral-600 mb-2">OPEN SOURCE</p>
           <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-4">TOOLS</h2>
           <p className="text-neutral-500 max-w-2xl">
-            Share a Cursor canvas, then Triton / MCP / CLI tools.
+            Share an agent report, then Triton / MCP / CLI tools.
           </p>
         </div>
 

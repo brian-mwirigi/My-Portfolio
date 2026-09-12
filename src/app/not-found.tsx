@@ -95,7 +95,7 @@ export default function NotFound() {
               textDecoration: 'none',
             }}
           >
-            Drop a canvas instead
+            Drop a file instead
           </Link>
           <Link
             href="/cracked"

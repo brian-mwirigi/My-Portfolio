@@ -1,8 +1,10 @@
 'use client'
 
+import { Children, isValidElement } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { canvasTokens } from '@/lib/cursor-canvas/tokens'
+import { MermaidBlock } from './MermaidBlock'
 
 export function MarkdownView({ source }: { source: string }) {
   return (
@@ -97,6 +99,11 @@ export function MarkdownView({ source }: { source: string }) {
             </blockquote>
           ),
           code: ({ className, children }) => {
+            const lang = /language-(\w+)/.exec(className || '')?.[1]
+            const text = String(children).replace(/\n$/, '')
+            if (lang === 'mermaid') {
+              return <MermaidBlock chart={text} />
+            }
             const inline = !className
             if (inline) {
               return (
@@ -131,20 +138,34 @@ export function MarkdownView({ source }: { source: string }) {
               </code>
             )
           },
-          pre: ({ children }) => (
-            <pre
-              style={{
-                margin: '0 0 16px',
-                padding: 14,
-                borderRadius: 8,
-                border: `1px solid ${canvasTokens.stroke.tertiary}`,
-                background: canvasTokens.bg.editor,
-                overflow: 'auto',
-              }}
-            >
-              {children}
-            </pre>
-          ),
+          pre: ({ children }) => {
+            const only = Children.count(children) === 1 ? Children.only(children) : null
+            const className =
+              isValidElement(only) &&
+              typeof (only.props as { className?: unknown }).className === 'string'
+                ? (only.props as { className: string }).className
+                : ''
+            if (
+              (isValidElement(only) && only.type === MermaidBlock) ||
+              className.includes('language-mermaid')
+            ) {
+              return <>{children}</>
+            }
+            return (
+              <pre
+                style={{
+                  margin: '0 0 16px',
+                  padding: 14,
+                  borderRadius: 8,
+                  border: `1px solid ${canvasTokens.stroke.tertiary}`,
+                  background: canvasTokens.bg.editor,
+                  overflow: 'auto',
+                }}
+              >
+                {children}
+              </pre>
+            )
+          },
           table: ({ children }) => (
             <div style={{ overflow: 'auto', margin: '0 0 16px' }}>
               <table

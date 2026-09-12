@@ -36,3 +36,7 @@ next-env.d.ts
 # ignored secrets
 future-checkout.md
 content.md
+
+# nested CLI repo — source files may be copied here, not the git dir
+tools/canvas-share/.git
+

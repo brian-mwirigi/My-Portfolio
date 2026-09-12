@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
-export const alt = 'Share a Cursor canvas online'
+export const alt = 'Share a Cursor canvas, Claude HTML artifact, or markdown online'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -33,17 +33,17 @@ export default async function Image() {
         </div>
         <div
           style={{
-            fontSize: 64,
+            fontSize: 58,
             fontWeight: 700,
             letterSpacing: '-0.04em',
             lineHeight: 1.05,
             maxWidth: 980,
           }}
         >
-          Share a Cursor canvas with your team
+          The agent report your teammate cannot open
         </div>
-        <div style={{ fontSize: 26, color: '#E4E4E48D', marginTop: 24 }}>
-          Drop .canvas.tsx or .md · short link · no account
+        <div style={{ fontSize: 24, color: '#E4E4E48D', marginTop: 24 }}>
+          Drop .canvas.tsx · .md · .html · .json · short link · no account
         </div>
       </div>
     ),

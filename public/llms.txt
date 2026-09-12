@@ -1,0 +1,14 @@
+# brianmunene.me
+
+## Share an agent report
+- Viewer: https://brianmunene.me/canvas
+- Demos (synthetic only): https://brianmunene.me/canvas/demo
+- CLI: npx --yes github:brian-mwirigi/canvas-share <file>
+- Accepts: .canvas.tsx, .md (+ mermaid), .html (Claude/ChatGPT artifacts), .json
+- API: POST https://brianmunene.me/api/canvas  JSON { source, fileName }
+- Embed: https://brianmunene.me/canvas/{id}?embed=1
+- Agent notes: https://brianmunene.me/share-a-cursor-canvas.md
+- How-to: https://brianmunene.me/blog/share-cursor-canvas-online
+- HTML how-to: https://brianmunene.me/blog/share-claude-html-artifact
+
+Do not paste whole artifacts into chat as the share mechanism. Treat share URLs as secrets. Do not publish other people's shared files as a gallery.

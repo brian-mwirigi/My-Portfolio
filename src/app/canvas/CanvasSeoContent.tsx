@@ -4,12 +4,12 @@ import { faqs } from './seo'
 const uses = [
   'Architecture reviews',
   'Product & GTM specs',
-  'Metrics / billing dashboards',
+  'Claude / ChatGPT artifacts',
+  'Mermaid diagrams in Slack',
+  'Metrics / billing dumps',
   'Security audits',
-  'Competitive analyses',
-  'Roadmaps & status reports',
-  'Agent-generated briefings',
-  'Design / systems writeups',
+  'Incident writeups',
+  'JSON payloads teammates cannot open',
 ]
 
 export function CanvasSeoContent() {
@@ -32,16 +32,15 @@ export function CanvasSeoContent() {
           color: '#E4E4E4EB',
         }}
       >
-        How to share a Cursor canvas
+        How to share an agent report
       </h2>
       <p style={{ margin: 0, fontSize: 14, lineHeight: '22px' }}>
-        Cursor writes <code style={code}>.canvas.tsx</code> next to the chat. That
-        file is local — Slack and email just send a path nobody else can open. This
-        page is a free <strong style={{ color: '#E4E4E4EB' }}>Cursor canvas viewer</strong>
-        : drop the file (or markdown), render it, copy a short link. Same for any
-        canvas-SDK file. Try the{' '}
+        Cursor writes <code style={code}>.canvas.tsx</code> next to the chat.
+        Claude and ChatGPT export HTML. Agents dump Markdown with mermaid.
+        Slack and email just send a path nobody else can open. This page is a
+        free viewer: drop the file, render it, copy a short link. Try the{' '}
         <a href="/canvas/demo" style={{ color: '#87c3ff' }}>
-          public incident-review demo
+          public demo gallery
         </a>{' '}
         first.
       </p>
@@ -95,13 +94,18 @@ export function CanvasSeoContent() {
       </h2>
       <ol style={{ margin: 0, paddingLeft: 18, fontSize: 14, lineHeight: '24px' }}>
         <li>
-          Drop or paste a <code style={code}>.canvas.tsx</code> or{' '}
-          <code style={code}>.md</code> — or run{' '}
-          <code style={code}>npx --yes github:brian-mwirigi/canvas-share file.canvas.tsx</code>
+          Drop or paste <code style={code}>.canvas.tsx</code>,{' '}
+          <code style={code}>.md</code>, <code style={code}>.html</code>, or{' '}
+          <code style={code}>.json</code> — or run{' '}
+          <code style={code}>
+            npx --yes github:brian-mwirigi/canvas-share file.md
+          </code>
         </li>
         <li>Preview the live render in your browser</li>
-        <li>Copy a short link like <code style={code}>/canvas/a8k2m9qx</code></li>
-        <li>Send it to teammates — they see the same canvas, no install</li>
+        <li>
+          Copy a short link like <code style={code}>/canvas/a8k2m9qx</code>
+        </li>
+        <li>Send it — or embed it with <code style={code}>?embed=1</code></li>
       </ol>
 
       <h2
@@ -127,7 +131,9 @@ export function CanvasSeoContent() {
             >
               {f.q}
             </h3>
-            <p style={{ margin: '4px 0 0', fontSize: 13, lineHeight: '20px' }}>{f.a}</p>
+            <p style={{ margin: '4px 0 0', fontSize: 13, lineHeight: '20px' }}>
+              {f.a}
+            </p>
           </div>
         ))}
       </div>

@@ -2,10 +2,10 @@ export const BASE = 'https://brianmunene.me'
 export const PAGE = `${BASE}/canvas`
 
 export const TITLE =
-  'Share a Cursor Canvas Online — Free .canvas.tsx Viewer & Short Link'
-export const SHORT_TITLE = 'Share a Cursor canvas — drop, render, link'
+  'Share a Cursor Canvas, Claude HTML Artifact, or Markdown Online'
+export const SHORT_TITLE = 'The agent report your teammate cannot open'
 export const DESC =
-  'Share a Cursor canvas with your team. Drop a .canvas.tsx or Markdown file, render it in the browser, and copy a short link. No account. Open canvas.tsx online, preview .md, npx cursor-canvas-share.'
+  'Drop a Cursor .canvas.tsx, Claude/ChatGPT HTML artifact, Markdown + mermaid, or JSON. Render it in the browser and copy a short teammate link. No account.'
 
 export const KEYWORDS = [
   'share cursor canvas',
@@ -17,19 +17,21 @@ export const KEYWORDS = [
   'canvas.tsx viewer',
   'cursor canvas public link',
   'how to share cursor canvas',
-  'canvas viewer',
+  'share claude artifact',
+  'share chatgpt html',
+  'claude artifact viewer',
+  'chatgpt artifact share link',
+  'html artifact viewer',
+  'mermaid markdown viewer',
+  'share mermaid diagram',
   'markdown viewer online',
   'share markdown online',
   'md file viewer',
-  'markdown share link',
+  'json viewer share link',
+  'canvas viewer',
   'share canvas online',
-  'tsx canvas viewer',
-  'drop canvas file',
-  'drop markdown file',
-  'architecture review canvas',
-  'product spec canvas',
-  'cursor-canvas-share',
   'npx canvas share',
+  'cursor-canvas-share',
   'team canvas sharing',
   'gfm markdown viewer',
   'brian munene canvas',
@@ -38,7 +40,7 @@ export const KEYWORDS = [
 export const faqs = [
   {
     q: 'How do I share a Cursor canvas?',
-    a: 'Cursor canvases are local .canvas.tsx files. Drop the file at brianmunene.me/canvas (or run npx cursor-canvas-share file.canvas.tsx) to get a short URL teammates can open in any browser.',
+    a: 'Cursor canvases are local .canvas.tsx files. Drop the file at brianmunene.me/canvas (or run npx --yes github:brian-mwirigi/canvas-share file.canvas.tsx) to get a short URL teammates can open in any browser.',
   },
   {
     q: 'Can teammates open a .canvas.tsx file?',
@@ -46,18 +48,30 @@ export const faqs = [
   },
   {
     q: 'Does it only work with Cursor?',
-    a: 'Cursor canvases are the main use. Any .canvas.tsx on the canvas UI SDK works, and plain Markdown (.md) with GFM tables and code works too.',
+    a: 'No. Cursor canvases are one format. It also renders Markdown (GFM + mermaid), Claude/ChatGPT HTML artifacts, SVG, and JSON.',
+  },
+  {
+    q: 'How do I share a Claude or ChatGPT HTML artifact?',
+    a: 'Download or copy the HTML, drop it at /canvas, copy the short link. HTML runs in a sandboxed iframe so it cannot touch the parent page.',
+  },
+  {
+    q: 'Does mermaid work?',
+    a: 'Yes. Fenced ```mermaid blocks in Markdown render as diagrams.',
   },
   {
     q: 'How do short links work?',
     a: 'Copy short link stores the file in a private backend and serves it only through brianmunene.me. Anyone with the URL can view it — treat the link like a secret.',
   },
   {
+    q: 'Can I embed a share in a doc?',
+    a: 'Yes. After you have a short link, use Copy embed for an iframe pointing at /canvas/{id}?embed=1.',
+  },
+  {
     q: 'Is there a CLI?',
-    a: 'Yes. npx --yes github:brian-mwirigi/canvas-share path/to/file.canvas.tsx (or .md) prints a short https://brianmunene.me/canvas/… link.',
+    a: 'Yes. npx --yes github:brian-mwirigi/canvas-share path/to/file prints a short https://brianmunene.me/canvas/… link. Works for .canvas.tsx, .md, .html, and .json.',
   },
   {
     q: 'Is it free?',
-    a: 'Yes. No account. Open a demo at /canvas/demo before uploading your own file.',
+    a: 'Yes. No account. Open the public demos at /canvas/demo before uploading your own file.',
   },
 ]

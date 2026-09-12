@@ -25,6 +25,11 @@ const nextConfig = {
       { source: '/share-canvas', destination: '/canvas', permanent: false },
       { source: '/canvas-viewer', destination: '/canvas', permanent: false },
       { source: '/cursor-canvas', destination: '/canvas', permanent: false },
+      { source: '/share-claude-artifact', destination: '/canvas', permanent: false },
+      { source: '/share-html-artifact', destination: '/canvas', permanent: false },
+      { source: '/mermaid-viewer', destination: '/canvas', permanent: false },
+      { source: '/share-markdown', destination: '/canvas', permanent: false },
+      { source: '/open-canvas-tsx', destination: '/canvas', permanent: false },
       // AUX short URL
       { source: '/aux', destination: '/aux-mcp', permanent: true },
       { source: '/spotify-aux', destination: '/aux-mcp', permanent: true },

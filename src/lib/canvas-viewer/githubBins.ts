@@ -22,7 +22,7 @@ export { OWNER as CANVAS_BINS_OWNER, REPO as CANVAS_BINS_REPO }
 
 export type SharedDoc = {
   source: string
-  kind: 'canvas' | 'markdown'
+  kind: import('./kind').DocKind
   fileName: string
 }
 
@@ -36,9 +36,11 @@ export async function fetchSharedCanvas(id: string): Promise<SharedDoc | null> {
     return null
   }
 
-  const candidates: Array<{ ext: string; kind: 'canvas' | 'markdown' }> = [
+  const candidates: Array<{ ext: string; kind: import('./kind').DocKind }> = [
     { ext: 'canvas.tsx', kind: 'canvas' },
     { ext: 'md', kind: 'markdown' },
+    { ext: 'html', kind: 'html' },
+    { ext: 'json', kind: 'json' },
     { ext: 'tsx', kind: 'canvas' },
   ]
 

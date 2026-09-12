@@ -1,7 +1,7 @@
 {
   "name": "cursor-canvas-share",
-  "version": "1.0.0",
-  "description": "Share a Cursor .canvas.tsx or Markdown file as a short brianmunene.me/canvas link",
+  "version": "1.1.0",
+  "description": "Share a Cursor .canvas.tsx, Markdown, HTML artifact, or JSON file as a short brianmunene.me/canvas link",
   "bin": {
     "cursor-canvas-share": "bin.mjs",
     "canvas-share": "bin.mjs"
@@ -16,7 +16,11 @@
     "canvas",
     "canvas.tsx",
     "share",
-    "markdown"
+    "markdown",
+    "html",
+    "mermaid",
+    "claude",
+    "chatgpt"
   ],
   "author": "Brian Munene Mwirigi",
   "license": "MIT",

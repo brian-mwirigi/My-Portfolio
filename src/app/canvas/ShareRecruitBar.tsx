@@ -29,7 +29,7 @@ export function ShareRecruitBar() {
           color: canvasTokens.text.secondary,
         }}
       >
-        Cursor canvases stay on your machine. Teammates can&apos;t open the file.
+        Agent reports stay in the chat. Drop the file → free short link.
       </p>
       <Link
         href="/canvas"

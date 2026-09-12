@@ -51,13 +51,12 @@ const jsonLd = {
         url: 'https://brianmunene.me',
       },
       featureList: [
-        'Upload .canvas.tsx and Markdown (.md) files',
-        'Render interactive canvases and GFM markdown in the browser',
+        'Upload .canvas.tsx, Markdown, HTML artifacts, and JSON',
+        'Render Cursor canvases, GFM + mermaid, and sandboxed HTML',
         'Short shareable links for teams',
-        'Architecture reviews, specs, notes, dashboards, audits',
-        'Share Cursor .canvas.tsx as a short URL',
-        'Compatible with Cursor canvases, canvas SDK files, and markdown',
-        'CLI: npx cursor-canvas-share',
+        'Embed via iframe (?embed=1)',
+        'Architecture reviews, specs, Claude/ChatGPT artifacts',
+        'CLI: npx --yes github:brian-mwirigi/canvas-share',
       ],
     },
     {
@@ -73,9 +72,9 @@ const jsonLd = {
     },
     {
       '@type': 'HowTo',
-      name: 'Share a Cursor canvas online',
+      name: 'Share an agent report online',
       description:
-        'Turn a local Cursor .canvas.tsx file into a short URL teammates can open.',
+        'Turn a local Cursor canvas, Claude HTML artifact, markdown, or JSON file into a short URL teammates can open.',
       step: [
         {
           '@type': 'HowToStep',
@@ -85,7 +84,7 @@ const jsonLd = {
         {
           '@type': 'HowToStep',
           name: 'Drop the file',
-          text: 'Drop or paste the .canvas.tsx or .md file.',
+          text: 'Drop or paste a .canvas.tsx, .md, .html, or .json file.',
         },
         {
           '@type': 'HowToStep',

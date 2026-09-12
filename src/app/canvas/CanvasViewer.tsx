@@ -3,87 +3,58 @@
 import {
   useCallback,
   useEffect,
-  useMemo,
   useRef,
   useState,
   type CSSProperties,
-  type ChangeEvent,
   type DragEvent,
 } from 'react'
-import { compileCanvasSource } from '@/lib/canvas-viewer/compile'
-import { detectKind, type DocKind } from '@/lib/canvas-viewer/kind'
+import { readSourceFromLocation } from '@/lib/canvas-viewer/share'
 import {
-  buildShareUrl,
-  readSourceFromLocation,
-} from '@/lib/canvas-viewer/share'
+  acceptAttr,
+  defaultFileName,
+  detectKind,
+  isAllowedFile,
+  kindLabel,
+  type DocKind,
+} from '@/lib/canvas-viewer/kind'
 import { canvasTokens } from '@/lib/cursor-canvas/tokens'
-import { MarkdownView } from './MarkdownView'
+import { DocumentView } from './DocumentView'
+import { ShareActions } from './ShareActions'
 import { ShareRecruitBar } from './ShareRecruitBar'
 
 type Mode = 'drop' | 'view'
 
+const MAX_BYTES = 400_000
+
 export function CanvasViewer() {
+  const [mode, setMode] = useState<Mode>('drop')
   const [source, setSource] = useState('')
   const [fileName, setFileName] = useState<string | null>(null)
   const [kind, setKind] = useState<DocKind>('canvas')
-  const [mode, setMode] = useState<Mode>('drop')
   const [error, setError] = useState<string | null>(null)
+  const [dragging, setDragging] = useState(false)
   const [copied, setCopied] = useState(false)
   const [sharing, setSharing] = useState(false)
   const [shortPath, setShortPath] = useState<string | null>(null)
-  const [dragging, setDragging] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const compiled = useMemo(() => {
-    if (kind !== 'canvas' || !source.trim()) return null
-    return compileCanvasSource(source)
-  }, [kind, source])
-
   useEffect(() => {
-    const fromHash = readSourceFromLocation()
-    if (fromHash) {
-      const k = detectKind(fromHash)
-      setSource(fromHash)
-      setKind(k)
-      setFileName(k === 'markdown' ? 'shared.md' : 'shared.canvas.tsx')
-      setMode('view')
-      setError(null)
-    }
-
-    const onHash = () => {
-      const next = readSourceFromLocation()
-      if (next) {
-        const k = detectKind(next)
-        setSource(next)
-        setKind(k)
-        setFileName((f) => f ?? (k === 'markdown' ? 'shared.md' : 'shared.canvas.tsx'))
-        setMode('view')
-        setError(null)
-      }
-    }
-    window.addEventListener('hashchange', onHash)
-    return () => window.removeEventListener('hashchange', onHash)
+    const decoded = readSourceFromLocation(window.location.hash)
+    if (!decoded) return
+    const k = detectKind(decoded, null)
+    setSource(decoded)
+    setKind(k)
+    setFileName(defaultFileName(k))
+    setMode('view')
   }, [])
 
-  useEffect(() => {
-    if (kind !== 'canvas') {
-      setError(null)
+  const ingest = useCallback(async (file: File) => {
+    if (!isAllowedFile(file)) {
+      setError('Drop .canvas.tsx, .md, .html, or .json.')
       return
     }
-    if (!compiled) return
-    if (!compiled.ok) setError(compiled.error)
-    else setError(null)
-  }, [compiled, kind])
-
-  const loadText = useCallback(async (file: File) => {
-    const lower = file.name.toLowerCase()
-    const ok =
-      lower.endsWith('.md') ||
-      lower.endsWith('.markdown') ||
-      lower.endsWith('.tsx') ||
-      lower.endsWith('.canvas.tsx')
-    if (!ok) {
-      setError('Drop a .canvas.tsx / .tsx or .md file.')
+    if (file.size > MAX_BYTES) {
+      setError('File is over 400KB. Trim it, then try again.')
       return
     }
     const text = await file.text()
@@ -97,31 +68,53 @@ export function CanvasViewer() {
     window.history.replaceState(null, '', '/canvas')
   }, [])
 
+  useEffect(() => {
+    const onPaste = (e: ClipboardEvent) => {
+      if (mode !== 'drop') return
+      const file = e.clipboardData?.files?.[0]
+      if (file && isAllowedFile(file)) {
+        e.preventDefault()
+        void ingest(file)
+        return
+      }
+      const text = e.clipboardData?.getData('text')
+      if (!text?.trim()) return
+      const target = e.target as HTMLElement | null
+      if (target?.closest('textarea, input')) return
+      e.preventDefault()
+      setSource(text)
+      setError(null)
+    }
+    window.addEventListener('paste', onPaste)
+    return () => window.removeEventListener('paste', onPaste)
+  }, [mode, ingest])
+
   const onDrop = useCallback(
     (e: DragEvent) => {
       e.preventDefault()
       setDragging(false)
-      const file = e.dataTransfer.files?.[0]
-      if (file) void loadText(file)
+      const file = e.dataTransfer.files[0]
+      if (file) void ingest(file)
     },
-    [loadText]
+    [ingest]
   )
 
   const onFileInput = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
+    (e: React.ChangeEvent<HTMLInputElement>) => {
       const file = e.target.files?.[0]
-      if (file) void loadText(file)
+      if (file) void ingest(file)
+      e.target.value = ''
     },
-    [loadText]
+    [ingest]
   )
 
-  const copyText = async (url: string) => {
+  const copyText = async (text: string) => {
     try {
-      await navigator.clipboard.writeText(url)
+      await navigator.clipboard.writeText(text)
       setCopied(true)
       window.setTimeout(() => setCopied(false), 2000)
     } catch {
-      window.prompt('Copy this share link:', url)
+      setError('Could not copy. Select the URL from the address bar.')
     }
   }
 
@@ -133,7 +126,10 @@ export function CanvasViewer() {
       const res = await fetch('/api/canvas', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ source, fileName }),
+        body: JSON.stringify({
+          source,
+          fileName: fileName ?? defaultFileName(kind),
+        }),
       })
       const data = (await res.json()) as {
         url?: string
@@ -149,31 +145,17 @@ export function CanvasViewer() {
         return
       }
 
-      const fat = buildShareUrl(source)
-      window.history.replaceState(
-        null,
-        '',
-        fat.replace(window.location.origin, '')
+      setError(
+        data.error
+          ? `${data.error} Short links need CANVAS_BINS_TOKEN on the host.`
+          : 'Could not create a short link.'
       )
-      await copyText(fat)
-      if (data.error) {
-        setError(
-          `${data.error} Copied a long fallback link instead — add CANVAS_BINS_TOKEN on Vercel for short URLs.`
-        )
-      }
     } catch {
-      const fat = buildShareUrl(source)
-      window.history.replaceState(
-        null,
-        '',
-        fat.replace(window.location.origin, '')
-      )
-      await copyText(fat)
-      setError('Short link failed — copied a long fallback link instead.')
+      setError('Short link failed. Check the network and try again.')
     } finally {
       setSharing(false)
     }
-  }, [source, fileName, sharing])
+  }, [source, fileName, kind, sharing])
 
   const clear = useCallback(() => {
     setSource('')
@@ -189,13 +171,16 @@ export function CanvasViewer() {
     if (!source.trim()) return
     const k = detectKind(source, fileName)
     setKind(k)
-    setFileName((f) => f ?? (k === 'markdown' ? 'pasted.md' : 'pasted.canvas.tsx'))
+    setFileName((f) => f ?? defaultFileName(k))
     setMode('view')
     setShortPath(null)
     window.history.replaceState(null, '', '/canvas')
   }
 
-  const Comp = compiled?.ok ? compiled.Component : null
+  const shareUrl =
+    typeof window !== 'undefined' && shortPath
+      ? `${window.location.origin}${shortPath}`
+      : ''
 
   return (
     <div
@@ -233,7 +218,7 @@ export function CanvasViewer() {
             brianmunene.me
           </a>
           <span style={{ color: canvasTokens.stroke.primary }}>/</span>
-          <strong style={{ fontSize: 13, fontWeight: 600 }}>Canvas viewer</strong>
+          <strong style={{ fontSize: 13, fontWeight: 600 }}>Share a file</strong>
           {mode === 'view' ? (
             <span
               style={{
@@ -244,7 +229,7 @@ export function CanvasViewer() {
                 padding: '2px 8px',
               }}
             >
-              {kind === 'markdown' ? 'markdown' : 'canvas'}
+              {kindLabel(kind)}
             </span>
           ) : null}
           {shortPath ? (
@@ -304,7 +289,7 @@ export function CanvasViewer() {
               letterSpacing: '-0.02em',
             }}
           >
-            Share a Cursor canvas online
+            The agent report your teammate can&apos;t open
           </h1>
           <p
             style={{
@@ -314,23 +299,44 @@ export function CanvasViewer() {
               color: canvasTokens.text.secondary,
             }}
           >
-            Cursor <code style={codeStyle}>.canvas.tsx</code> files are local.
-            Teammates can&apos;t open them. Drop the file here (or a{' '}
-            <code style={codeStyle}>.md</code>), get a short link like{' '}
+            Cursor canvases stay on disk. Claude artifacts stay in a chat.
+            Markdown with mermaid dies in Slack. Drop the file here. Get{' '}
             <code style={codeStyle}>/canvas/a8k2m9qx</code>. No account.
           </p>
-          <p style={{ margin: '0 0 24px' }}>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: 8,
+              margin: '0 0 24px',
+            }}
+          >
+            {['.canvas.tsx', '.md + mermaid', '.html', '.json'].map((label) => (
+              <span
+                key={label}
+                style={{
+                  fontSize: 11,
+                  color: canvasTokens.text.secondary,
+                  border: `1px solid ${canvasTokens.stroke.tertiary}`,
+                  borderRadius: 999,
+                  padding: '3px 9px',
+                }}
+              >
+                {label}
+              </span>
+            ))}
             <a
               href="/canvas/demo"
               style={{
-                fontSize: 13,
+                fontSize: 12,
                 color: canvasTokens.text.link,
                 textDecoration: 'none',
+                alignSelf: 'center',
               }}
             >
-              Open the public demo →
+              Four public demos →
             </a>
-          </p>
+          </div>
 
           <div
             onDragEnter={(e) => {
@@ -359,16 +365,15 @@ export function CanvasViewer() {
             }}
           >
             <div style={{ fontSize: 15, fontWeight: 500, marginBottom: 8 }}>
-              Drop <code style={codeStyle}>.canvas.tsx</code> or{' '}
-              <code style={codeStyle}>.md</code> here
+              Drop a file here
             </div>
             <div style={{ fontSize: 13, color: canvasTokens.text.secondary }}>
-              or click to choose a file
+              or click · or paste (Ctrl/⌘ V)
             </div>
             <input
               ref={inputRef}
               type="file"
-              accept=".tsx,.canvas.tsx,.md,.markdown,text/plain,text/markdown"
+              accept={acceptAttr()}
               style={{ display: 'none' }}
               onChange={onFileInput}
             />
@@ -383,12 +388,12 @@ export function CanvasViewer() {
                 marginBottom: 8,
               }}
             >
-              Or paste canvas TSX / markdown
+              Or paste the source
             </label>
             <textarea
               value={source}
               onChange={(e) => setSource(e.target.value)}
-              placeholder={`# Product notes\n\nPaste **markdown** or a \`.canvas.tsx\` file.\n\n- Short links for teammates\n- No account\n- GFM tables supported`}
+              placeholder={`# Incident brief\n\nPaste markdown (mermaid works), HTML, JSON, or a \`.canvas.tsx\`.\n\n\`\`\`mermaid\nflowchart LR\n  A[Drop] --> B[Short link]\n\`\`\``}
               rows={12}
               style={{
                 width: '100%',
@@ -443,8 +448,21 @@ export function CanvasViewer() {
                 color: canvasTokens.text.primary,
               }}
             >
-              npx --yes github:brian-mwirigi/canvas-share review.canvas.tsx
+              npx --yes github:brian-mwirigi/canvas-share notes.md
             </code>
+            <div style={{ marginTop: 10 }}>
+              <button
+                type="button"
+                onClick={() => {
+                  void navigator.clipboard.writeText(
+                    'When you finish a .canvas.tsx, .md, .html, or .json the user wants teammates to open, tell them to drop it at https://brianmunene.me/canvas or run `npx --yes github:brian-mwirigi/canvas-share <file>`. Do not paste the whole file. Treat the share URL as a secret.'
+                  )
+                }}
+                style={btnStyle(false)}
+              >
+                Copy agent instruction
+              </button>
+            </div>
           </div>
           <p
             style={{
@@ -454,8 +472,14 @@ export function CanvasViewer() {
               color: canvasTokens.text.tertiary,
             }}
           >
-            Also: share Cursor canvas link, open canvas.tsx online, markdown
-            preview. Storage is private. Treat share URLs like secrets.
+            Storage is a private repo. Anyone with the link can view — treat
+            URLs like secrets. HTML runs in a sandboxed iframe.{' '}
+            <a
+              href="/llms.txt"
+              style={{ color: canvasTokens.text.link, textDecoration: 'none' }}
+            >
+              llms.txt
+            </a>
           </p>
         </div>
       ) : (
@@ -476,15 +500,19 @@ export function CanvasViewer() {
               {error}
             </div>
           ) : null}
-          {kind === 'markdown' ? (
-            <div style={{ paddingBottom: 72 }}>
-              <MarkdownView source={source} />
+          {shortPath && shareUrl ? (
+            <div style={{ padding: '12px 16px 0' }}>
+              <ShareActions
+                url={shareUrl}
+                source={source}
+                kind={kind}
+                fileName={fileName ?? defaultFileName(kind)}
+              />
             </div>
-          ) : (
-            <div style={{ maxWidth: 1100, margin: '0 auto', paddingBottom: 72 }}>
-              {Comp && compiled?.ok ? <Comp /> : null}
-            </div>
-          )}
+          ) : null}
+          <div style={{ paddingBottom: 72 }}>
+            <DocumentView source={source} kind={kind} />
+          </div>
           <ShareRecruitBar />
         </div>
       )}
