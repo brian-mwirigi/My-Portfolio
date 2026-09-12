@@ -18,6 +18,7 @@ import {
 } from '@/lib/canvas-viewer/share'
 import { canvasTokens } from '@/lib/cursor-canvas/tokens'
 import { MarkdownView } from './MarkdownView'
+import { ShareRecruitBar } from './ShareRecruitBar'
 
 type Mode = 'drop' | 'view'
 
@@ -303,20 +304,32 @@ export function CanvasViewer() {
               letterSpacing: '-0.02em',
             }}
           >
-            Free canvas & markdown viewer
+            Share a Cursor canvas online
           </h1>
           <p
             style={{
-              margin: '0 0 24px',
+              margin: '0 0 16px',
               fontSize: 14,
               lineHeight: '20px',
               color: canvasTokens.text.secondary,
             }}
           >
-            Drop a <code style={codeStyle}>.canvas.tsx</code> or{' '}
-            <code style={codeStyle}>.md</code> file — reviews, specs, notes,
-            dashboards, audits — render it live and share a short team link like{' '}
-            <code style={codeStyle}>/canvas/a8k2m9qx</code>.
+            Cursor <code style={codeStyle}>.canvas.tsx</code> files are local.
+            Teammates can&apos;t open them. Drop the file here (or a{' '}
+            <code style={codeStyle}>.md</code>), get a short link like{' '}
+            <code style={codeStyle}>/canvas/a8k2m9qx</code>. No account.
+          </p>
+          <p style={{ margin: '0 0 24px' }}>
+            <a
+              href="/canvas/demo"
+              style={{
+                fontSize: 13,
+                color: canvasTokens.text.link,
+                textDecoration: 'none',
+              }}
+            >
+              Open the public demo →
+            </a>
           </p>
 
           <div
@@ -404,18 +417,45 @@ export function CanvasViewer() {
             </div>
           </div>
 
-          <p
+          <div
             style={{
               marginTop: 28,
+              padding: 12,
+              borderRadius: 8,
+              border: `1px solid ${canvasTokens.stroke.tertiary}`,
+              background: canvasTokens.bg.editor,
+            }}
+          >
+            <div
+              style={{
+                fontSize: 12,
+                color: canvasTokens.text.tertiary,
+                marginBottom: 6,
+              }}
+            >
+              From a terminal
+            </div>
+            <code
+              style={{
+                fontFamily:
+                  'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+                fontSize: 12,
+                color: canvasTokens.text.primary,
+              }}
+            >
+              npx --yes github:brian-mwirigi/canvas-share review.canvas.tsx
+            </code>
+          </div>
+          <p
+            style={{
+              marginTop: 16,
               fontSize: 12,
               lineHeight: '18px',
               color: canvasTokens.text.tertiary,
             }}
           >
-            Markdown = any <code style={codeStyle}>.md</code>. Canvas = import the
-            UI SDK (<code style={codeStyle}>cursor/canvas</code>). Short-link files
-            are stored in a <strong>private</strong> repo and only served through
-            this site — still only open links from people you trust.
+            Also: share Cursor canvas link, open canvas.tsx online, markdown
+            preview. Storage is private. Treat share URLs like secrets.
           </p>
         </div>
       ) : (
@@ -437,12 +477,15 @@ export function CanvasViewer() {
             </div>
           ) : null}
           {kind === 'markdown' ? (
-            <MarkdownView source={source} />
+            <div style={{ paddingBottom: 72 }}>
+              <MarkdownView source={source} />
+            </div>
           ) : (
-            <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+            <div style={{ maxWidth: 1100, margin: '0 auto', paddingBottom: 72 }}>
               {Comp && compiled?.ok ? <Comp /> : null}
             </div>
           )}
+          <ShareRecruitBar />
         </div>
       )}
     </div>

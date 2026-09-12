@@ -55,7 +55,9 @@ const jsonLd = {
         'Render interactive canvases and GFM markdown in the browser',
         'Short shareable links for teams',
         'Architecture reviews, specs, notes, dashboards, audits',
+        'Share Cursor .canvas.tsx as a short URL',
         'Compatible with Cursor canvases, canvas SDK files, and markdown',
+        'CLI: npx cursor-canvas-share',
       ],
     },
     {
@@ -68,6 +70,29 @@ const jsonLd = {
           text: f.a,
         },
       })),
+    },
+    {
+      '@type': 'HowTo',
+      name: 'Share a Cursor canvas online',
+      description:
+        'Turn a local Cursor .canvas.tsx file into a short URL teammates can open.',
+      step: [
+        {
+          '@type': 'HowToStep',
+          name: 'Open the viewer',
+          text: 'Go to https://brianmunene.me/canvas or run npx --yes github:brian-mwirigi/canvas-share.',
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Drop the file',
+          text: 'Drop or paste the .canvas.tsx or .md file.',
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Copy the short link',
+          text: 'Share https://brianmunene.me/canvas/{id} with your team.',
+        },
+      ],
     },
     {
       '@type': 'BreadcrumbList',

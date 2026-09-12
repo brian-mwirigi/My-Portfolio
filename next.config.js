@@ -21,6 +21,10 @@ const nextConfig = {
     return [
       // COBBLE short URL
       { source: '/cobble', destination: '/cobble-mcp', permanent: true },
+      { source: '/share', destination: '/canvas', permanent: false },
+      { source: '/share-canvas', destination: '/canvas', permanent: false },
+      { source: '/canvas-viewer', destination: '/canvas', permanent: false },
+      { source: '/cursor-canvas', destination: '/canvas', permanent: false },
       // AUX short URL
       { source: '/aux', destination: '/aux-mcp', permanent: true },
       { source: '/spotify-aux', destination: '/aux-mcp', permanent: true },

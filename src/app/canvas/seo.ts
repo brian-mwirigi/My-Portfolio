@@ -2,63 +2,62 @@ export const BASE = 'https://brianmunene.me'
 export const PAGE = `${BASE}/canvas`
 
 export const TITLE =
-  'Free Canvas & Markdown Viewer — Share .canvas.tsx and .md Online'
-export const SHORT_TITLE = 'Canvas & Markdown Viewer — drop, render, share'
+  'Share a Cursor Canvas Online — Free .canvas.tsx Viewer & Short Link'
+export const SHORT_TITLE = 'Share a Cursor canvas — drop, render, link'
 export const DESC =
-  'Free online viewer for .canvas.tsx and Markdown (.md) files. Drop architecture reviews, product specs, notes, dashboards, or agent reports, render them in the browser, and share a short link with your team. No account. GFM markdown + canvas SDK supported.'
+  'Share a Cursor canvas with your team. Drop a .canvas.tsx or Markdown file, render it in the browser, and copy a short link. No account. Open canvas.tsx online, preview .md, npx cursor-canvas-share.'
 
 export const KEYWORDS = [
+  'share cursor canvas',
+  'cursor canvas share',
+  'cursor canvas.tsx link',
+  'open canvas.tsx online',
+  'cursor canvas viewer',
+  'share canvas.tsx',
+  'canvas.tsx viewer',
+  'cursor canvas public link',
+  'how to share cursor canvas',
   'canvas viewer',
   'markdown viewer online',
   'share markdown online',
   'md file viewer',
   'markdown share link',
-  'canvas.tsx viewer',
   'share canvas online',
   'tsx canvas viewer',
   'drop canvas file',
   'drop markdown file',
   'architecture review canvas',
   'product spec canvas',
-  'metrics dashboard share',
-  'shareable react canvas',
-  'online canvas renderer',
-  'online markdown renderer',
+  'cursor-canvas-share',
+  'npx canvas share',
   'team canvas sharing',
-  'cursor canvas viewer',
-  'cursor canvas share',
-  '.canvas.tsx',
   'gfm markdown viewer',
-  'free canvas host',
-  'share analysis canvas',
-  'interactive report viewer',
-  'react canvas share link',
   'brian munene canvas',
 ]
 
 export const faqs = [
   {
-    q: 'What is this canvas viewer?',
-    a: 'A free web tool to upload or paste a .canvas.tsx or Markdown (.md) file, render it live in the browser, and share a short URL with teammates — no login required.',
+    q: 'How do I share a Cursor canvas?',
+    a: 'Cursor canvases are local .canvas.tsx files. Drop the file at brianmunene.me/canvas (or run npx cursor-canvas-share file.canvas.tsx) to get a short URL teammates can open in any browser.',
   },
   {
-    q: 'What can I share?',
-    a: 'Canvases and markdown: architecture reviews, product fits, notes, billing breakdowns, security audits, metrics dashboards, roadmaps, competitive analyses, and agent-generated reports.',
+    q: 'Can teammates open a .canvas.tsx file?',
+    a: 'Not in Cursor unless they have the file. This viewer renders the canvas in the browser and gives you a short link like /canvas/a8k2m9qx.',
   },
   {
     q: 'Does it only work with Cursor?',
-    a: 'No. Cursor canvases work, any .canvas.tsx on the canvas UI SDK works, and plain Markdown (.md) with GFM tables/code works too.',
+    a: 'Cursor canvases are the main use. Any .canvas.tsx on the canvas UI SDK works, and plain Markdown (.md) with GFM tables and code works too.',
   },
   {
     q: 'How do short links work?',
-    a: 'Click Copy short link to get a compact URL like /canvas/a8k2m9qx. Files are stored in a private backend and only served through brianmunene.me — teammates open the link and see the same render.',
+    a: 'Copy short link stores the file in a private backend and serves it only through brianmunene.me. Anyone with the URL can view it — treat the link like a secret.',
   },
   {
-    q: 'Is my shared file public on GitHub?',
-    a: 'No. Short-link storage is in a private repository. Content is only accessible via the share URL on this site (anyone with the link can still view it — treat links like secrets).',
+    q: 'Is there a CLI?',
+    a: 'Yes. npx --yes github:brian-mwirigi/canvas-share path/to/file.canvas.tsx (or .md) prints a short https://brianmunene.me/canvas/… link.',
   },
   {
     q: 'Is it free?',
-    a: 'Yes. Free to use, no account. Only open share links from people you trust.',
+    a: 'Yes. No account. Open a demo at /canvas/demo before uploading your own file.',
   },
 ]

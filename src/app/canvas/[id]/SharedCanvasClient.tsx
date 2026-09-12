@@ -6,6 +6,7 @@ import { compileCanvasSource } from '@/lib/canvas-viewer/compile'
 import type { DocKind } from '@/lib/canvas-viewer/kind'
 import { canvasTokens } from '@/lib/cursor-canvas/tokens'
 import { MarkdownView } from '../MarkdownView'
+import { ShareRecruitBar } from '../ShareRecruitBar'
 
 export function SharedCanvasClient({
   id,
@@ -115,7 +116,9 @@ export function SharedCanvasClient({
       </header>
 
       {kind === 'markdown' ? (
-        <MarkdownView source={source} />
+        <div style={{ paddingBottom: 72 }}>
+          <MarkdownView source={source} />
+        </div>
       ) : compiled && !compiled.ok ? (
         <div
           style={{
@@ -130,10 +133,11 @@ export function SharedCanvasClient({
           {compiled.error}
         </div>
       ) : (
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', paddingBottom: 72 }}>
           {Comp ? <Comp /> : null}
         </div>
       )}
+      <ShareRecruitBar />
     </div>
   )
 }

@@ -16,11 +16,11 @@ const projects = [
 const cliTools = [
   {
     title: 'Canvas Viewer',
-    desc: 'Drop .canvas.tsx or .md — reviews, specs, notes, dashboards — render live and share a short team link',
-    features: ['Canvas + MD', 'Short links', 'No account', 'Team share'],
-    npm: 'https://brianmunene.me/canvas',
-    registryLabel: 'Open',
-    github: 'https://brianmunene.me/canvas',
+    desc: 'Share a Cursor canvas — drop .canvas.tsx or .md, render live, copy a short teammate link',
+    features: ['Cursor canvas', 'Short links', 'npx share', 'No account'],
+    npm: 'https://github.com/brian-mwirigi/canvas-share',
+    registryLabel: 'npx',
+    github: 'https://github.com/brian-mwirigi/canvas-share',
     docs: '/canvas',
     color: 'from-zinc-400 to-neutral-600'
   },
@@ -130,6 +130,9 @@ export default function Home() {
           <a href="/cracked" className="px-5 py-2 text-xs uppercase tracking-widest hover:bg-white/10 rounded-full transition whitespace-nowrap">
             cracked
           </a>
+          <a href="/canvas" className="px-5 py-2 text-xs uppercase tracking-widest hover:bg-white/10 rounded-full transition whitespace-nowrap">
+            canvas
+          </a>
         </div>
       </nav>
 
@@ -159,13 +162,21 @@ export default function Home() {
             <span>NAIROBI, KE</span>
             <span>REMOTE OK</span>
           </div>
-          <a 
-            href="/Brian_Mwirigi_Arc_Resume.pdf" 
-            download 
-            className="mt-8 inline-block px-8 py-3 border border-neutral-700 rounded-full text-xs tracking-widest hover:bg-white hover:text-black transition"
-          >
-            DOWNLOAD RESUME
-          </a>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="/canvas"
+              className="inline-block px-8 py-3 bg-white text-black rounded-full text-xs tracking-widest hover:bg-neutral-200 transition"
+            >
+              SHARE A CANVAS
+            </a>
+            <a
+              href="/Brian_Mwirigi_Arc_Resume.pdf"
+              download
+              className="inline-block px-8 py-3 border border-neutral-700 rounded-full text-xs tracking-widest hover:bg-white hover:text-black transition"
+            >
+              DOWNLOAD RESUME
+            </a>
+          </div>
         </motion.div>
       </section>
 
@@ -175,7 +186,7 @@ export default function Home() {
           <p className="text-xs tracking-[0.3em] text-neutral-600 mb-2">OPEN SOURCE</p>
           <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-4">TOOLS</h2>
           <p className="text-neutral-500 max-w-2xl">
-            Open-source tools — Triton debugging, MCP servers for agents, and developer CLIs.
+            Share a Cursor canvas, then Triton / MCP / CLI tools.
           </p>
         </div>
 

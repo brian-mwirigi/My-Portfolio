@@ -32,15 +32,18 @@ export function CanvasSeoContent() {
           color: '#E4E4E4EB',
         }}
       >
-        Share any canvas — not just one IDE
+        How to share a Cursor canvas
       </h2>
       <p style={{ margin: 0, fontSize: 14, lineHeight: '22px' }}>
-        This is a free online <strong style={{ color: '#E4E4E4EB' }}>canvas & markdown
-        viewer</strong> and short-link host for <code style={code}>.canvas.tsx</code> and{' '}
-        <code style={code}>.md</code> files. Use it for team reviews, investor updates,
-        incident writeups, product fits, notes, or any report that should live as a link —
-        not a screenshot thread. Cursor canvases, canvas-SDK files, and GFM markdown all
-        work.
+        Cursor writes <code style={code}>.canvas.tsx</code> next to the chat. That
+        file is local — Slack and email just send a path nobody else can open. This
+        page is a free <strong style={{ color: '#E4E4E4EB' }}>Cursor canvas viewer</strong>
+        : drop the file (or markdown), render it, copy a short link. Same for any
+        canvas-SDK file. Try the{' '}
+        <a href="/canvas/demo" style={{ color: '#87c3ff' }}>
+          public incident-review demo
+        </a>{' '}
+        first.
       </p>
 
       <h2
@@ -93,7 +96,8 @@ export function CanvasSeoContent() {
       <ol style={{ margin: 0, paddingLeft: 18, fontSize: 14, lineHeight: '24px' }}>
         <li>
           Drop or paste a <code style={code}>.canvas.tsx</code> or{' '}
-          <code style={code}>.md</code> file
+          <code style={code}>.md</code> — or run{' '}
+          <code style={code}>npx --yes github:brian-mwirigi/canvas-share file.canvas.tsx</code>
         </li>
         <li>Preview the live render in your browser</li>
         <li>Copy a short link like <code style={code}>/canvas/a8k2m9qx</code></li>

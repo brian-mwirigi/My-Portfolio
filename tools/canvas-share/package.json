@@ -1,0 +1,31 @@
+{
+  "name": "cursor-canvas-share",
+  "version": "1.0.0",
+  "description": "Share a Cursor .canvas.tsx or Markdown file as a short brianmunene.me/canvas link",
+  "bin": {
+    "cursor-canvas-share": "bin.mjs",
+    "canvas-share": "bin.mjs"
+  },
+  "type": "module",
+  "files": [
+    "bin.mjs",
+    "README.md"
+  ],
+  "keywords": [
+    "cursor",
+    "canvas",
+    "canvas.tsx",
+    "share",
+    "markdown"
+  ],
+  "author": "Brian Munene Mwirigi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brian-mwirigi/canvas-share.git"
+  },
+  "homepage": "https://brianmunene.me/canvas",
+  "engines": {
+    "node": ">=18"
+  }
+}
