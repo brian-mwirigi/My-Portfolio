@@ -85,6 +85,7 @@ export default function CvPage() {
             company; AI/ML Lead at CropChain (UN PRME semi-finalist). Published
             ML researcher with a Zenodo paper on computational consciousness.
             Builder of Chrome extensions and CLI tools with 400+ active users.
+            2nd place at Cursor Kenya Build Night for JibuTax.
             Experienced across the full stack — from transformer architecture
             research to Next.js/React Native front ends and FastAPI back ends.
           </p>
@@ -112,6 +113,14 @@ export default function CvPage() {
         </Section>
 
         <Section title="Open source & products">
+          <Job
+            name="JibuTax"
+            meta="Cursor Kenya Build Night · 2nd place · 2026"
+            bullets={[
+              'Agentic voice-call tax and invoicing tool for informal Kenyan traders, built on top of KRA rails rather than a parallel paper trail.',
+              '2nd place at Cursor Kenya Build Night; prototype for traders who will talk to an agent on a call instead of filling iTax / eTIMS forms.',
+            ]}
+          />
           <Job
             name="AI Slop Blocker"
             meta="Chrome Extension · 2026"
@@ -194,6 +203,7 @@ export default function CvPage() {
 
         <Section title="Awards & competitive programs">
           <ul className="list-disc pl-5 space-y-1 text-[13.5px] leading-6 text-neutral-700">
+            <li>2nd place — Cursor Kenya Build Night · JibuTax · 2026</li>
             <li>UN PRME Innovation Studio Semi-Finalist — CropChain · May 2026</li>
           </ul>
         </Section>
