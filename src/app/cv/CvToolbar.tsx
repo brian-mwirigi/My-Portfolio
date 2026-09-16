@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-const PDF = '/Brian_Mwirigi_Arc_Resume.pdf'
+const PDF = '/Brian_Munene_Mwirigi_CV.pdf'
 
 export function CvToolbar() {
   const [copied, setCopied] = useState(false)

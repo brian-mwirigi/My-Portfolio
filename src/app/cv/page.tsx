@@ -8,12 +8,12 @@ const PAGE = 'https://brianmunene.me/cv'
 export const metadata: Metadata = {
   title: 'CV — Brian Munene Mwirigi',
   description:
-    'View Brian Munene Mwirigi’s CV online. Full-stack developer and aspiring AI/ML engineer based in Nairobi.',
+    'Software engineer, AI/ML engineer, and entrepreneur in Nairobi. Co-founder of Corvux. AI/ML Lead at CropChain.',
   alternates: { canonical: PAGE },
   openGraph: {
     title: 'CV — Brian Munene Mwirigi',
     description:
-      'Full-stack developer · Nairobi. Open this page — no download required.',
+      'Software Engineer · AI/ML Engineer · Entrepreneur. Nairobi. Open this page — no download required.',
     url: PAGE,
     type: 'profile',
   },
@@ -48,7 +48,7 @@ export default function CvPage() {
             Brian Munene Mwirigi
           </p>
           <p className="mt-2 text-sm text-neutral-600">
-            Full-Stack Developer · Aspiring AI/ML Engineer · Developer Tooling
+            Software Engineer · AI/ML Engineer · Entrepreneur
           </p>
           <p className="mt-3 text-sm text-neutral-500 flex flex-wrap gap-x-3 gap-y-1">
             <span>Nairobi, Kenya</span>
@@ -60,105 +60,107 @@ export default function CvPage() {
             </a>
             <a
               className="underline"
+              href="https://linkedin.com/in/brian-munene-mwirigi"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+            <a
+              className="underline"
               href="https://github.com/brian-mwirigi"
               target="_blank"
               rel="noopener noreferrer"
             >
-              github.com/brian-mwirigi
+              GitHub
             </a>
           </p>
         </header>
 
         <Section title="Professional summary">
           <p>
-            Full-stack developer and aspiring AI/ML engineer with shipped
-            projects spanning SaaS platforms, developer tooling and AI-powered
-            systems. Technical lead on CropChain, an AI credit scoring API
-            incubated under the UN Global Compact&apos;s PRME Innovation Studio,
-            currently at the Semi-Finals. Builder of open-source CLI tools with
-            7,000+ downloads.
+            Second-year Computer Science student at Strathmore University with a
+            strong track record of shipping production-grade AI/ML systems and
+            developer tools. Co-founder of Corvux, a sovereign AI infrastructure
+            company; AI/ML Lead at CropChain (UN PRME semi-finalist). Published
+            ML researcher with a Zenodo paper on computational consciousness.
+            Builder of Chrome extensions and CLI tools with 400+ active users.
+            Experienced across the full stack — from transformer architecture
+            research to Next.js/React Native front ends and FastAPI back ends.
           </p>
-        </Section>
-
-        <Section title="Technical skills">
-          <Skill line="Frontend" items="React, TypeScript, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS" />
-          <Skill line="Backend" items="Python, FastAPI, Flask, Node.js, SQLAlchemy, REST APIs, PostgreSQL, SQLite" />
-          <Skill line="AI/ML" items="XGBoost, Scikit-learn, Pandas, NumPy, Open-Meteo API" />
-          <Skill line="Tools" items="Git/GitHub, Docker, CLI development, npm/pip, Chrome Extensions API, Vercel, GitHub Actions" />
-        </Section>
-
-        <Section title="Key projects">
-          <Job
-            name="CropChain"
-            meta="Python · FastAPI · XGBoost · PostgreSQL · Sentinel-2"
-            bullets={[
-              'AI-powered credit scoring API for smallholder farmers, incubated under the UN Global Compact’s PRME Innovation Studio 2026',
-              'Integrates various data sources for field-level crop health assessment',
-              'XGBoost model trained on Financial Inclusion in Africa dataset (AUC-ROC ~0.70) with Open-Meteo weather integration',
-              'Production FastAPI backend with async SQLAlchemy 2.0, PostgreSQL via Docker, and API key authentication',
-              'Designing marketplace architecture connecting farmers to MFIs; Railway cloud deployment in progress',
-            ]}
-          />
-          <Job
-            name="codesession-cli"
-            meta="TypeScript · Node.js · npm"
-            bullets={[
-              'Open-source CLI tracking AI-assisted coding sessions including time, files changed, git diffs, and token costs across providers',
-              '7,000+ downloads on npm; uses file system watchers and git process spawning to capture sessions automatically',
-              'Compatible with Claude Code, OpenAI, Google, and any agent framework',
-            ]}
-          />
-          <Job
-            name="Chrome extensions"
-            meta="JavaScript · Chrome Extensions API"
-            bullets={[
-              'AI Slop Blocker (366 users) — filters AI-generated content from browsing feeds',
-              'Twitter Thread Downloader (114 users, v1.6, rated 4 stars) — full thread download tool',
-              'TikTok Video Downloader HD (226 users) — no-watermark video download extension',
-            ]}
-          />
-          <Job
-            name="E-commerce & landing page portfolio"
-            meta="React · JavaScript · CSS3"
-            bullets={[
-              'Built quality sites for diverse industries through Breon Studio',
-              'Prototypes include luxury retail, hospitality, creative agencies and local Nairobi businesses',
-            ]}
-          />
-          <Job
-            name="Developer CLI suite"
-            meta="TypeScript · Node.js · npm"
-            bullets={[
-              'aitoken-cli: unified dashboard normalizing AI API token costs across OpenAI, Anthropic and Google',
-              'apisnap-cli: HTTP proxy capturing live API traffic and auto-generating Jest tests and MSW mock handlers',
-              'devmem-cli: persistent cross-project code memory giving AI assistants context across entire codebases',
-            ]}
-          />
-          <Job
-            name="Volvox Bot (open source contribution)"
-            meta="TypeScript · React · Discord.js"
-            bullets={[
-              'Contributor to VolvoxLLC/volvox-bot, an open-source Discord bot platform with a web dashboard',
-              'Merged PR #305: improved dashboard UX structure and reduced UI clutter (frontend)',
-              'Merged PR #181: implemented protection logic preventing moderation actions on admins, mods, and owners',
-            ]}
-          />
         </Section>
 
         <Section title="Experience">
           <Job
-            name="Co-Founder & Lead Developer"
-            meta="Breon Studio · 2026 – Present"
+            name="AI/ML Lead"
+            meta="CropChain (UN PRME Innovation Studio) · Sep 2025 – Present · Nairobi"
             bullets={[
-              'Two-person web development and design studio building production websites and digital products for clients in Kenya',
-              'Manage full project lifecycle: requirements, design, development, delivery, and ongoing maintenance',
+              'Trained XGBoost credit-scoring model on 4,563 records (Zindi Financial Inclusion dataset) achieving AUC-ROC of 0.7031.',
+              'Built production FastAPI + PostgreSQL backend with Sentinel-2/CDSE satellite imagery pipeline and Open-Meteo weather integration.',
+              'Integrated M-Pesa transaction analysis for alternative credit signals; built React Native Android app with Organic Intelligence UI.',
+              'Conducted 13 stakeholder interviews; advanced CropChain to PRME Innovation Studio semi-finals (pitched May 2026).',
             ]}
           />
           <Job
-            name="Full-Stack Developer"
-            meta="Freelance & contract work · 2025 – Present"
+            name="Founder"
+            meta="Breon Studio · Jan 2026 – Present · Nairobi"
             bullets={[
-              'Self-managed remote workflows with consistent delivery and clear stakeholder communication',
+              'Runs a web development and design studio delivering production websites for clients including Metumi Paints Centre.',
+              "Full-stack delivery across Next.js, React, Tailwind CSS, and M-Pesa / Africa's Talking payment integrations.",
+            ]}
+          />
+        </Section>
+
+        <Section title="Open source & products">
+          <Job
+            name="AI Slop Blocker"
+            meta="Chrome Extension · 2026"
+            bullets={[
+              '415+ active users; local Naive Bayes ML classifier at 94.8% accuracy to detect AI-generated content in-browser.',
+              'Monetized via Lemon Squeezy ($12/month or $120 lifetime); built ML pipeline entirely client-side to preserve privacy.',
+            ]}
+          />
+          <Job
+            name="CostHQ (formerly codesession-cli)"
+            meta="Open-source CLI · 2026"
+            bullets={[
+              'AI cost-tracking CLI for developers; open-core freemium model with pro tier gating (proxyCaching, advancedFirewall, multiProject).',
+              'Organic npm traction alongside sister packages: aitoken-cli, runbook-cli, devmem-cli, apisnap-cli.',
+            ]}
+          />
+          <Job
+            name="MeridianArc"
+            meta="Desktop app · 2026"
+            bullets={[
+              'Cross-platform Pomodoro productivity app built with Tauri + React + TypeScript; scaffolded and shipped to GitHub.',
+            ]}
+          />
+        </Section>
+
+        <Section title="Research & publications">
+          <Job
+            name="Computational Consciousness Simulation"
+            meta="Zenodo · DOI 10.5281/zenodo.18940956 · 2026"
+            bullets={[
+              "Published multi-agent ML research finding that network topology — not learning — determines a network's ability to predict its own behavior.",
+              'Identified phase transition between N=324 and N=576 agents; measured autonomy-predictability anti-correlation (r = −0.71).',
+            ]}
+          />
+          <Job
+            name="ConstKV / Engram — KV cache compression"
+            meta="Independent research · 2026"
+            bullets={[
+              'Designed novel transformer KV-cache compression architecture: SSM-based encoder compressing token sequences into a fixed-size latent state, with query-conditioned MLP reconstructor.',
+              'Smoke test passed with stable loss (0.7943); compression ratios from 3,072× (T=128) to 98,304× (T=4,096).',
+            ]}
+          />
+          <Job
+            name="Panacea — Vultr-native zero-trust security agent for hospital networks"
+            meta="RAISE Summit Hackathon (Paris) · 2026"
+            bullets={[
+              'Built autonomous multi-step AI agent (Agent Orchestration lead) that reads medical device manuals, cross-checks CVE databases and enforces live zero-trust firewall policy on Vultr Cloud Firewall.',
+              'Designed the agentic loop, per-rule citation trail, explainable confidence scoring, and audit-log system; shipped on Vultr Serverless Inference (Nemotron) and Vultr Vector Store for a HIPAA-aligned, zero-egress pitch.',
+              'Submitted to RAISE Summit Hackathon, Paris (July 2026).',
             ]}
           />
         </Section>
@@ -166,23 +168,33 @@ export default function CvPage() {
         <Section title="Education">
           <Job
             name="BSc Computer Science"
-            meta="Strathmore University, Nairobi · Expected 2029"
-            bullets={[]}
+            meta="Strathmore University · 2024 – Present · Nairobi"
+            bullets={[
+              'Second year. Relevant coursework: Algorithms, Data Structures, Machine Learning, Database Systems, Software Engineering.',
+            ]}
           />
           <Job
             name="Software Engineering Certificate"
-            meta="Moringa School · 2025"
+            meta="Moringa School (Flatiron School Partnership) · 2025 · Nairobi"
             bullets={[
-              'Full-stack development bootcamp — React, Python, Flask, PostgreSQL',
+              'Full-stack web development and software engineering fundamentals; completed prior to Strathmore enrollment.',
             ]}
           />
         </Section>
 
-        <Section title="Additional">
+        <Section title="Technical skills">
+          <Skill line="Languages" items="Python, TypeScript, JavaScript, SQL, Rust (learning), Bash" />
+          <Skill line="AI/ML" items="PyTorch, Transformers (HuggingFace), XGBoost, Scikit-learn, LangChain, CrewAI, Langfuse, RAGAS, Presidio" />
+          <Skill line="LLM infra" items="LlamaFarm, Ollama, vLLM, LLM Guard, Vanna.ai, Graphiti, Llama 3 / Mistral / Qwen / DeepSeek / Gemma 4" />
+          <Skill line="Backend" items="FastAPI, Node.js, PostgreSQL, REST APIs, Africa's Talking, M-Pesa Daraja API" />
+          <Skill line="Frontend" items="React, Next.js, React Native, Tailwind CSS, Tauri" />
+          <Skill line="DevOps" items="Docker, GitHub Actions, Railway, Linux/WSL, Git" />
+          <Skill line="Other" items="Chrome Extension APIs, npm publishing, Lemon Squeezy monetization, Sentinel-2/CDSE satellite data" />
+        </Section>
+
+        <Section title="Awards & competitive programs">
           <ul className="list-disc pl-5 space-y-1 text-[13.5px] leading-6 text-neutral-700">
-            <li>Available for part-time remote engagement (20–25 hrs/week)</li>
-            <li>897 GitHub contributions in the last year; active open-source contributor</li>
-            <li>Fluent in English; comfortable with async communication and self-managed workflows</li>
+            <li>UN PRME Innovation Studio Semi-Finalist — CropChain · May 2026</li>
           </ul>
         </Section>
       </article>
@@ -229,7 +241,7 @@ function Job({
     <div className="mb-5">
       <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
         <h3 className="font-semibold text-[15px]">{name}</h3>
-        <p className="text-xs text-neutral-500">{meta}</p>
+        <p className="text-xs text-neutral-500 text-right">{meta}</p>
       </div>
       {bullets.length ? (
         <ul className="mt-1.5 list-disc pl-5 space-y-1 text-[13.5px] leading-6 text-neutral-700">

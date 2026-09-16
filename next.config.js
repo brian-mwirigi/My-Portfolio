@@ -20,7 +20,7 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/Brian_Mwirigi_Arc_Resume.pdf',
+        source: '/Brian_Munene_Mwirigi_CV.pdf',
         headers: [
           {
             key: 'Content-Disposition',
