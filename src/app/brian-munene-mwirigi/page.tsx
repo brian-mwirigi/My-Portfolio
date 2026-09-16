@@ -63,6 +63,7 @@ export default function BrianMuneneMwirigiPage() {
         {/* Quick links */}
         <section className="mb-16 flex flex-wrap gap-3">
           {[
+            { label: 'CV', href: 'https://www.brianmunene.me/cv' },
             { label: 'brianmunene.me', href: 'https://www.brianmunene.me' },
             { label: 'GitHub', href: 'https://github.com/brian-mwirigi' },
             { label: 'LinkedIn', href: 'https://linkedin.com/in/brian-munene-890993346' },

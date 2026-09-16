@@ -17,6 +17,19 @@ const nextConfig = {
     }
     return config
   },
+  async headers() {
+    return [
+      {
+        source: '/Brian_Mwirigi_Arc_Resume.pdf',
+        headers: [
+          {
+            key: 'Content-Disposition',
+            value: 'inline; filename="Brian_Munene_Mwirigi_CV.pdf"',
+          },
+        ],
+      },
+    ]
+  },
   async redirects() {
     return [
       // COBBLE short URL
@@ -33,6 +46,8 @@ const nextConfig = {
       { source: '/privacy-policy', destination: '/privacy', permanent: true },
       { source: '/terms-of-service', destination: '/terms', permanent: true },
       { source: '/terms-of-conditions', destination: '/terms', permanent: true },
+      { source: '/resume', destination: '/cv', permanent: true },
+      { source: '/cv.pdf', destination: '/cv', permanent: false },
       // AUX short URL
       { source: '/aux', destination: '/aux-mcp', permanent: true },
       { source: '/spotify-aux', destination: '/aux-mcp', permanent: true },

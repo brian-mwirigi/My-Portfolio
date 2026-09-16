@@ -170,11 +170,10 @@ export default function Home() {
               SHARE A CANVAS
             </a>
             <a
-              href="/Brian_Mwirigi_Arc_Resume.pdf"
-              download
+              href="/cv"
               className="inline-block px-8 py-3 border border-neutral-700 rounded-full text-xs tracking-widest hover:bg-white hover:text-black transition"
             >
-              DOWNLOAD RESUME
+              VIEW CV
             </a>
           </div>
         </motion.div>
